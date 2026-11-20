@@ -1,6 +1,5 @@
 import { useId } from 'react'
-import { ArrowIcon } from '../../../shared/components/ArrowIcon.tsx'
-import { Button } from '../../../shared/components/Button.tsx'
+import { BackHomeButton } from '../../../shared/components/BackHomeButton.tsx'
 import { PROGRAMMATIC_FOCUS_TAB_INDEX } from '../../../shared/constants.ts'
 import { useFocusOnMount } from '../../../shared/hooks/useFocusOnMount.ts'
 import { getCyclicItem, indexToPosition } from '../../../shared/utils.ts'
@@ -12,7 +11,7 @@ import { RULE_SLIDES } from './slides/ruleSlides.ts'
 import { SlideControls } from './SlideControls.tsx'
 import { SlideProgress } from './SlideProgress.tsx'
 
-export function RulesScreen({ onBackHome }: RulesScreenProps) {
+export function RulesScreen({ onBackHome, onStartGame }: RulesScreenProps) {
   const headingId = useId()
   const headingRef = useFocusOnMount<HTMLHeadingElement>()
   const slideshow = useSlideshow(RULE_SLIDES.length)
@@ -22,12 +21,7 @@ export function RulesScreen({ onBackHome }: RulesScreenProps) {
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col gap-6 px-4 py-6 sm:px-6 sm:py-10">
-      <div>
-        <Button variant="ghost" size="compact" onClick={onBackHome}>
-          <ArrowIcon direction="left" />
-          Volver al inicio
-        </Button>
-      </div>
+      <BackHomeButton onClick={onBackHome} />
       <h1
         id={headingId}
         ref={headingRef}
@@ -61,6 +55,7 @@ export function RulesScreen({ onBackHome }: RulesScreenProps) {
           isLast={slideshow.isLast}
           onPrevious={slideshow.goToPrevious}
           onNext={slideshow.goToNext}
+          onStart={onStartGame}
         />
       </section>
     </main>

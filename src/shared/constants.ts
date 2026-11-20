@@ -9,6 +9,8 @@ export const FIRST_INDEX = 0
 
 export const INDEX_STEP = 1
 
+export const LAST_ITEM_INDEX = -1
+
 export const FIRST_POSITION = 1
 
 export const PROGRAMMATIC_FOCUS_TAB_INDEX = -1
@@ -30,6 +32,9 @@ export const BUTTON_VARIANT_CLASSES: Record<ButtonVariant, string> = {
   ghost: 'text-muted hover:bg-surface-hover hover:text-foreground',
 }
 
+export const TEXT_INPUT_CLASSES =
+  'min-h-14 w-full min-w-0 flex-1 rounded-2xl border-2 border-border-strong bg-background px-4 text-xl font-semibold text-foreground outline-none transition-colors placeholder:font-normal placeholder:text-muted focus:border-ring focus:ring-4 focus:ring-ring/25 aria-invalid:border-error-border motion-reduce:transition-none'
+
 export const TILE_TONE_CLASSES: Record<TileTone, string> = {
   neutral: 'border-border-strong bg-surface text-foreground tile-edge-neutral',
   primary: 'border-primary bg-primary text-primary-foreground tile-edge-primary',
@@ -45,3 +50,5 @@ export const ARROW_PATHS: Record<ArrowDirection, string> = {
 }
 
 export const PLAY_PATH = 'M8 5.5v13l10-6.5z'
+
+export const ALERT_PATH = 'M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z'

@@ -1,6 +1,6 @@
 import { TILE_TONE_CLASSES } from '../../../../shared/constants.ts'
+import { buildLetterTiles } from '../../../../shared/utils.ts'
 import type { ExampleWordProps } from '../../interfaces.ts'
-import { buildLetterTiles } from '../../utils.ts'
 
 export function ExampleWord({
   word,

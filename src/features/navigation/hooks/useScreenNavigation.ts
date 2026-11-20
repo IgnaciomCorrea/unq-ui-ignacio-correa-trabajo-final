@@ -10,5 +10,7 @@ export function useScreenNavigation(): ScreenNavigation {
     screen,
     showHome: () => setScreen('home'),
     showRules: () => setScreen('rules'),
+    showPlayerName: () => setScreen('playerName'),
+    showGame: () => setScreen('game'),
   }
 }

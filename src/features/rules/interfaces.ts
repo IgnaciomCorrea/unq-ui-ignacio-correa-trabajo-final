@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import type { TileTone } from '../../shared/types.ts'
 import type { ExampleChain, SlideDirection } from './types.ts'
 
 export interface SlideshowState {
@@ -17,11 +16,6 @@ export interface Slideshow {
   goToPrevious: () => void
 }
 
-export interface LetterTile {
-  letter: string
-  tone: TileTone
-}
-
 export interface ChainLink {
   from: string
   to: string
@@ -29,6 +23,7 @@ export interface ChainLink {
 
 export interface RulesScreenProps {
   onBackHome: () => void
+  onStartGame: () => void
 }
 
 export interface RuleSlideContentProps {
@@ -46,6 +41,7 @@ export interface SlideControlsProps {
   isLast: boolean
   onPrevious: () => void
   onNext: () => void
+  onStart: () => void
 }
 
 export interface SlideProgressProps {

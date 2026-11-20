@@ -22,6 +22,7 @@ export interface TileStyle extends CSSProperties {
 
 export interface HomeScreenProps {
   leaderboardEntries: LeaderboardEntry[]
+  onStartGame: () => void
   onShowRules: () => void
 }
 

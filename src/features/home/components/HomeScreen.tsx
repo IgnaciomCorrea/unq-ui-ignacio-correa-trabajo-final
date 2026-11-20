@@ -4,7 +4,11 @@ import { Leaderboard } from '../../leaderboard/components/Leaderboard.tsx'
 import type { HomeScreenProps } from '../interfaces.ts'
 import { GameTitle } from './GameTitle.tsx'
 
-export function HomeScreen({ leaderboardEntries, onShowRules }: HomeScreenProps) {
+export function HomeScreen({
+  leaderboardEntries,
+  onStartGame,
+  onShowRules,
+}: HomeScreenProps) {
   const titleRef = useFocusOnMount<HTMLHeadingElement>()
 
   return (
@@ -12,7 +16,7 @@ export function HomeScreen({ leaderboardEntries, onShowRules }: HomeScreenProps)
       <div className="flex flex-col gap-10 lg:col-span-3">
         <GameTitle ref={titleRef} />
         <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-          <Button>Iniciar juego</Button>
+          <Button onClick={onStartGame}>Iniciar juego</Button>
           <Button variant="secondary" onClick={onShowRules}>
             ¿Primera vez jugando?
           </Button>

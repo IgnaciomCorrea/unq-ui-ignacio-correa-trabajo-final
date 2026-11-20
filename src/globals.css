@@ -17,6 +17,10 @@
   --color-primary-text: #b01c2e;
   --color-ring: var(--color-primary-text);
 
+  --color-error: #9a3412;
+  --color-error-surface: #fff7ed;
+  --color-error-border: #ea580c;
+
   --color-medal-gold: #f6c544;
   --color-medal-gold-dark: #6b4400;
   --color-medal-silver: #d4d9e0;
@@ -149,6 +153,9 @@
       --color-border-strong: #57534e;
       --color-primary-hover: #c62a3d;
       --color-primary-text: #f47c8a;
+      --color-error: #fdba74;
+      --color-error-surface: #431407;
+      --color-error-border: #fb923c;
     }
   }
 

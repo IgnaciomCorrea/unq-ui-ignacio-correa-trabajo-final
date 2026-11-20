@@ -12,6 +12,7 @@ export function SlideControls({
   isLast,
   onPrevious,
   onNext,
+  onStart,
 }: SlideControlsProps) {
   const previousButtonRef = useRef<HTMLButtonElement>(null)
   const forwardButtonRef = useRef<HTMLButtonElement>(null)
@@ -39,7 +40,7 @@ export function SlideControls({
       )}
       <span className={FORWARD_SLOT_CLASSES[forwardAction]}>
         {isLast ? (
-          <Button ref={forwardButtonRef} size="large">
+          <Button ref={forwardButtonRef} size="large" onClick={onStart}>
             Iniciar partida
             <PlayIcon />
           </Button>
