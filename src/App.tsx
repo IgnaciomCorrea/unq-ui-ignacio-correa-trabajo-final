@@ -1,9 +1,6 @@
-function App() {
-  return (
-    <main>
-      <h1>Palabras Encadenadas</h1>
-    </main>
-  )
-}
+import { HomeScreen } from './features/home/components/HomeScreen.tsx'
+import { PLACEHOLDER_ENTRIES } from './features/leaderboard/placeholderEntries.ts'
 
-export default App
+export function App() {
+  return <HomeScreen leaderboardEntries={PLACEHOLDER_ENTRIES} />
+}

@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Fredoka Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #faf7f2;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f5f4;
+  --color-foreground: #1c1917;
+  --color-muted: #57534e;
+  --color-border: #e7e5e4;
+  --color-border-strong: #d6d3d1;
+  --color-primary: #b01c2e;
+  --color-primary-hover: #8e1624;
+  --color-primary-edge: #6e0f1b;
+  --color-primary-foreground: #ffffff;
+  --color-primary-text: #b01c2e;
+  --color-ring: var(--color-primary-text);
+
+  --color-medal-gold: #f6c544;
+  --color-medal-gold-dark: #6b4400;
+  --color-medal-silver: #d4d9e0;
+  --color-medal-silver-dark: #4b5563;
+  --color-medal-bronze: #e3a36f;
+  --color-medal-bronze-dark: #5c2f0c;
+}
+
+@theme inline {
+  --animate-tile-pop: tile-pop var(--tile-pop-duration) var(--ease-bounce)
+    calc(var(--tile-index) * var(--tile-stagger)) both;
+  --animate-tile-wave: tile-wave var(--tile-wave-duration) ease-in-out
+    calc(var(--tile-wave-delay) + var(--tile-index) * var(--tile-stagger));
+
+  @keyframes tile-pop {
+    from {
+      opacity: 0;
+      scale: var(--tile-pop-scale);
+      translate: 0 var(--tile-pop-offset);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes tile-wave {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    40% {
+      translate: 0 var(--tile-wave-lift);
+    }
+  }
+}
+
+@utility edge-primary {
+  box-shadow: 0 var(--edge-depth) 0 0 var(--color-primary-edge);
+}
+
+@utility edge-neutral {
+  box-shadow: 0 var(--edge-depth) 0 0 var(--color-border-strong);
+}
+
+@utility tile-edge-primary {
+  box-shadow: 0 var(--tile-edge-depth) 0 0 var(--color-primary-edge);
+}
+
+@utility tile-edge-neutral {
+  box-shadow: 0 var(--tile-edge-depth) 0 0 var(--color-border-strong);
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+
+    --edge-depth: 0.25rem;
+    --tile-edge-depth: 0.12em;
+
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --tile-stagger: 60ms;
+    --tile-pop-duration: 500ms;
+    --tile-pop-scale: 0.3;
+    --tile-pop-offset: -1em;
+    --tile-wave-delay: 1600ms;
+    --tile-wave-duration: 1200ms;
+    --tile-wave-lift: -0.3em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background: #1c1917;
+      --color-surface: #292524;
+      --color-surface-hover: #393432;
+      --color-foreground: #fafaf9;
+      --color-muted: #a8a29e;
+      --color-border: #44403c;
+      --color-border-strong: #57534e;
+      --color-primary-hover: #c62a3d;
+      --color-primary-text: #f47c8a;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
