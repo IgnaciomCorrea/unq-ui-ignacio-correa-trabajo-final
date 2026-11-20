@@ -1,15 +1,20 @@
-import { BUTTON_BASE_CLASSES, BUTTON_VARIANT_CLASSES } from '../constants.ts'
+import {
+  BUTTON_BASE_CLASSES,
+  BUTTON_SIZE_CLASSES,
+  BUTTON_VARIANT_CLASSES,
+} from '../constants.ts'
 import type { ButtonProps } from '../interfaces.ts'
 
 export function Button({
   variant = 'primary',
+  size = 'regular',
   type = 'button',
   ...props
 }: ButtonProps) {
   return (
     <button
       type={type}
-      className={`${BUTTON_BASE_CLASSES} ${BUTTON_VARIANT_CLASSES[variant]}`}
+      className={`${BUTTON_BASE_CLASSES} ${BUTTON_SIZE_CLASSES[size]} ${BUTTON_VARIANT_CLASSES[variant]}`}
       {...props}
     />
   )

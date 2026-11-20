@@ -1,14 +1,20 @@
+import { PROGRAMMATIC_FOCUS_TAB_INDEX } from '../../../shared/constants.ts'
 import {
   TITLE_ROWS,
   TITLE_ROW_STYLE,
   TITLE_TEXT,
   TITLE_TILES_STYLE,
 } from '../constants.ts'
+import type { GameTitleProps } from '../interfaces.ts'
 import { TitleTile } from './TitleTile.tsx'
 
-export function GameTitle() {
+export function GameTitle({ ref }: GameTitleProps) {
   return (
-    <h1 className="@container w-full max-w-xl">
+    <h1
+      ref={ref}
+      tabIndex={PROGRAMMATIC_FOCUS_TAB_INDEX}
+      className="@container w-full max-w-xl outline-none"
+    >
       <span className="sr-only">{TITLE_TEXT}</span>
       <span
         aria-hidden="true"

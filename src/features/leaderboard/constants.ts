@@ -1,13 +1,12 @@
+import { indexToPosition } from '../../shared/utils.ts'
 import type { MedalStyle } from './interfaces.ts'
 import type { MedalKind } from './types.ts'
 
 export const LEADERBOARD_SIZE = 10
 
-export const FIRST_POSITION = 1
-
 export const LEADERBOARD_POSITIONS = Array.from(
   { length: LEADERBOARD_SIZE },
-  (_, index) => FIRST_POSITION + index,
+  (_, index) => indexToPosition(index),
 )
 
 export const SINGLE_WORD_COUNT = 1

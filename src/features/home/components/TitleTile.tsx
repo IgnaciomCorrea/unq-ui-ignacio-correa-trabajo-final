@@ -1,5 +1,6 @@
+import { TILE_TONE_CLASSES } from '../../../shared/constants.ts'
 import { getCyclicItem } from '../../../shared/utils.ts'
-import { TILE_TILT_CLASSES, TILE_TONE_CLASSES } from '../constants.ts'
+import { TILE_TILT_CLASSES } from '../constants.ts'
 import type { TileStyle, TitleTileProps } from '../interfaces.ts'
 
 export function TitleTile({ letter, tone, index }: TitleTileProps) {

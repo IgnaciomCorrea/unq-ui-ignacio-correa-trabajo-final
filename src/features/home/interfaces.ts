@@ -1,6 +1,6 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, Ref } from 'react'
+import type { TileTone } from '../../shared/types.ts'
 import type { LeaderboardEntry } from '../leaderboard/interfaces.ts'
-import type { TileTone } from './types.ts'
 
 export interface TitleWord {
   text: string
@@ -22,6 +22,11 @@ export interface TileStyle extends CSSProperties {
 
 export interface HomeScreenProps {
   leaderboardEntries: LeaderboardEntry[]
+  onShowRules: () => void
+}
+
+export interface GameTitleProps {
+  ref?: Ref<HTMLHeadingElement>
 }
 
 export interface TitleTileProps extends TitleTileData {
