@@ -7,7 +7,7 @@ export function ChainWord({ word, isFirst, isNewest }: ChainWordProps) {
 
   return (
     <span
-      className={`rounded-xl border-2 bg-surface px-3 py-1 text-lg font-semibold ${
+      className={`rounded-xl border-2 bg-surface px-3 py-1 text-lg font-semibold motion-safe:animate-word-pop ${
         isNewest ? CHAIN_WORD_CLASSES.newest : CHAIN_WORD_CLASSES.previous
       }`}
     >

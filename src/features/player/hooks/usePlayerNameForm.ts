@@ -5,11 +5,10 @@ import type { PlayerNameForm } from '../interfaces.ts'
 import { playerNameSchema } from '../schemas.ts'
 
 export function usePlayerNameForm(
-  initialName: string,
   onValidName: (playerName: string) => void,
 ): PlayerNameForm {
   const inputRef = useFocusOnMount<HTMLInputElement>()
-  const [name, setName] = useState(initialName)
+  const [name, setName] = useState('')
   const [error, setError] = useState<string>()
 
   function handleNameChange(event: ChangeEvent<HTMLInputElement>) {

@@ -1,17 +1,31 @@
-import { useId, type FormEvent } from 'react'
+import { useId } from 'react'
 import { Button } from '../../../shared/components/Button.tsx'
-import { FeedbackMessage } from '../../../shared/components/FeedbackMessage.tsx'
 import { TEXT_INPUT_CLASSES } from '../../../shared/constants.ts'
+import { INPUT_SHAKE_CLASSES } from '../constants.ts'
+import { useWordForm } from '../hooks/useWordForm.ts'
 import type { WordFormProps } from '../interfaces.ts'
+import { TurnMessage } from './TurnMessage.tsx'
 
-export function WordForm({ draftWord, feedback }: WordFormProps) {
+export function WordForm({
+  inputRef,
+  status,
+  pendingWord,
+  feedback,
+  nextLetter,
+  onSubmitWord,
+}: WordFormProps) {
   const inputId = useId()
-  const feedbackId = useId()
-  const hasFeedback = feedback !== undefined
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-  }
+  const messageId = useId()
+  const {
+    draftWord,
+    isShaking,
+    handleDraftChange,
+    handleSubmit,
+    handleBlur,
+    handleShakeEnd,
+  } = useWordForm(inputRef, onSubmitWord)
+  const isOver = status === 'over'
+  const isValidating = pendingWord !== undefined
 
   return (
     <form
@@ -27,22 +41,37 @@ export function WordForm({ draftWord, feedback }: WordFormProps) {
       </label>
       <div className="flex gap-3">
         <input
+          ref={inputRef}
           id={inputId}
           name="word"
-          defaultValue={draftWord}
+          value={draftWord}
+          onChange={handleDraftChange}
+          onBlur={handleBlur}
+          onAnimationEnd={handleShakeEnd}
+          readOnly={isValidating}
+          disabled={isOver}
           placeholder="Escribí una palabra"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="none"
           spellCheck={false}
           enterKeyHint="send"
-          aria-invalid={hasFeedback}
-          aria-describedby={hasFeedback ? feedbackId : undefined}
-          className={TEXT_INPUT_CLASSES}
+          aria-invalid={feedback?.kind === 'rejected'}
+          aria-describedby={messageId}
+          className={`${TEXT_INPUT_CLASSES} ${isShaking ? INPUT_SHAKE_CLASSES : ''}`}
         />
-        <Button type="submit">Enviar</Button>
+        <Button type="submit" disabled={isValidating || isOver}>
+          Enviar
+        </Button>
       </div>
-      {hasFeedback && <FeedbackMessage id={feedbackId} message={feedback} />}
+      <div id={messageId}>
+        <TurnMessage
+          isOver={isOver}
+          pendingWord={pendingWord}
+          feedback={feedback}
+          nextLetter={nextLetter}
+        />
+      </div>
     </form>
   )
 }

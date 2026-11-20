@@ -5,3 +5,5 @@ export type ButtonSize = 'compact' | 'regular' | 'large'
 export type ArrowDirection = 'left' | 'right'
 
 export type TileTone = 'neutral' | 'primary'
+
+export type FeedbackTone = 'error' | 'success' | 'neutral'

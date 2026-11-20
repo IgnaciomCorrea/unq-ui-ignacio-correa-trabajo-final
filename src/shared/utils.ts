@@ -1,4 +1,7 @@
 import {
+  BUTTON_BASE_CLASSES,
+  BUTTON_SIZE_CLASSES,
+  BUTTON_VARIANT_CLASSES,
   FIRST_INDEX,
   FIRST_POSITION,
   INDEX_STEP,
@@ -6,6 +9,14 @@ import {
 } from './constants.ts'
 import type { ZodError } from 'zod'
 import type { LetterTile } from './interfaces.ts'
+import type { ButtonSize, ButtonVariant } from './types.ts'
+
+export function getButtonClasses(
+  variant: ButtonVariant,
+  size: ButtonSize,
+): string {
+  return `${BUTTON_BASE_CLASSES} ${BUTTON_SIZE_CLASSES[size]} ${BUTTON_VARIANT_CLASSES[variant]}`
+}
 
 export function getCyclicItem<Item>(items: readonly Item[], index: number): Item {
   return items[index % items.length]

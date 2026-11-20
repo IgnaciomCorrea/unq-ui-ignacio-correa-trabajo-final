@@ -1,7 +1,9 @@
+import type { AriaRole } from 'react'
 import type {
   ArrowDirection,
   ButtonSize,
   ButtonVariant,
+  FeedbackTone,
   TileTone,
 } from './types.ts'
 
@@ -52,3 +54,19 @@ export const ARROW_PATHS: Record<ArrowDirection, string> = {
 export const PLAY_PATH = 'M8 5.5v13l10-6.5z'
 
 export const ALERT_PATH = 'M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z'
+
+export const CHECK_PATH = 'M5 12.5l4.5 4.5L19 7'
+
+export const SPINNER_PATH = 'M21 12a9 9 0 1 1-9-9'
+
+export const FEEDBACK_TONE_CLASSES: Record<FeedbackTone, string> = {
+  error: 'border-error-border bg-error-surface text-error',
+  success: 'border-success-border bg-success-surface text-success',
+  neutral: 'border-border-strong bg-background text-muted',
+}
+
+export const FEEDBACK_ROLES: Record<FeedbackTone, AriaRole> = {
+  error: 'alert',
+  success: 'status',
+  neutral: 'status',
+}

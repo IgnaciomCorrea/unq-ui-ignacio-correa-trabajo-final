@@ -8,17 +8,14 @@ import { MAX_PLAYER_NAME_LENGTH } from '../constants.ts'
 import { usePlayerNameForm } from '../hooks/usePlayerNameForm.ts'
 import type { PlayerNameFormProps } from '../interfaces.ts'
 
-export function PlayerNameForm({
-  initialName,
-  onStartGame,
-}: PlayerNameFormProps) {
+export function PlayerNameForm({ onStartGame }: PlayerNameFormProps) {
   const titleId = useId()
   const inputId = useId()
   const counterId = useId()
   const noticeId = useId()
   const errorId = useId()
   const { inputRef, name, error, handleNameChange, handleSubmit } =
-    usePlayerNameForm(initialName, onStartGame)
+    usePlayerNameForm(onStartGame)
   const hasError = error !== undefined
   const describedBy = hasError
     ? `${noticeId} ${counterId} ${errorId}`
@@ -64,7 +61,11 @@ export function PlayerNameForm({
         <p id={counterId} className="self-end text-sm tabular-nums text-muted">
           {name.length}/{MAX_PLAYER_NAME_LENGTH} caracteres
         </p>
-        {hasError && <FeedbackMessage id={errorId} message={error} />}
+        {hasError && (
+          <FeedbackMessage id={errorId} tone="error">
+            {error}
+          </FeedbackMessage>
+        )}
       </div>
       <p
         id={noticeId}

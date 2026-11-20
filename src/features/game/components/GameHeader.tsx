@@ -1,7 +1,13 @@
 import type { GameHeaderProps } from '../interfaces.ts'
 import { GameStat } from './GameStat.tsx'
+import { ScoreGainBadge } from './ScoreGainBadge.tsx'
 
-export function GameHeader({ playerName, score, wordCount }: GameHeaderProps) {
+export function GameHeader({
+  playerName,
+  score,
+  wordCount,
+  lastGain,
+}: GameHeaderProps) {
   return (
     <header className="flex items-end justify-between gap-4">
       <div className="min-w-0">
@@ -11,7 +17,11 @@ export function GameHeader({ playerName, score, wordCount }: GameHeaderProps) {
         </p>
       </div>
       <dl className="flex shrink-0 gap-3">
-        <GameStat label="Puntaje" value={score} />
+        <GameStat label="Puntaje" value={score}>
+          {lastGain && (
+            <ScoreGainBadge key={lastGain.id} points={lastGain.points} />
+          )}
+        </GameStat>
         <GameStat label="Palabras" value={wordCount} />
       </dl>
     </header>

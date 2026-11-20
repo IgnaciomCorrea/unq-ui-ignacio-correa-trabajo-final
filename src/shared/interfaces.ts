@@ -1,8 +1,9 @@
-import type { ComponentPropsWithRef } from 'react'
+import type { ComponentPropsWithRef, ReactNode } from 'react'
 import type {
   ArrowDirection,
   ButtonSize,
   ButtonVariant,
+  FeedbackTone,
   TileTone,
 } from './types.ts'
 
@@ -22,8 +23,13 @@ export interface LetterTile {
 }
 
 export interface FeedbackMessageProps {
-  id: string
-  message: string
+  id?: string
+  tone: FeedbackTone
+  children: ReactNode
+}
+
+export interface FeedbackIconProps {
+  tone: FeedbackTone
 }
 
 export interface BackHomeButtonProps {
