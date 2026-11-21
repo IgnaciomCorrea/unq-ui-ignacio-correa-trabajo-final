@@ -4,7 +4,7 @@ Juego de palabras encadenadas hecho con React para el Trabajo Final Integrador d
 
 ## Requisitos
 
-- [Node.js](https://nodejs.org/)
+- [Node.js](https://nodejs.org/) 22.13 o superior
 - [Git](https://git-scm.com/)
 
 ## Cómo levantar la app por primera vez
@@ -49,6 +49,20 @@ npm run dev
 ```
 
 La app queda disponible en la URL definida en `URL_LOCAL`. Con el ejemplo anterior, en http://localhost:8080.
+
+## Cómo correr los tests
+
+```bash
+npm test
+```
+
+Ese comando corre todos los tests una vez. Para que se vuelvan a correr solos cada vez que se guarda un archivo, se usa `npm run test:watch`.
+
+Los tests no necesitan el archivo `.env` ni conexión a internet. La API de palabras está simulada, así que nunca se le hacen pedidos reales.
+
+Todos los tests están en la carpeta `tests/`, que repite la estructura de `src/`: por ejemplo, los de `src/features/game/utils.ts` están en `tests/features/game/utils.test.ts`. Las herramientas que comparten, como el diccionario simulado, están en `tests/helpers/`.
+
+Están hechos con [Vitest](https://vitest.dev/) y [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/), y prueban la app como la usaría una persona: escriben palabras, esperan la respuesta del diccionario, dejan correr el reloj y abandonan la partida.
 
 ## Problemas frecuentes
 
